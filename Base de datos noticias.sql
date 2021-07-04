@@ -94,3 +94,15 @@ begin
 delete from ArticulosNoticias where IdNoticias = @IdNoticia
 end
 
+create procedure ObtenerPais
+as set nocount on
+begin
+select p.IdPais,p.NombrePais from Pais p
+end
+
+create procedure ObtenerCategoria
+as set nocount on
+begin
+select c.IdCategoria,c.NombreCategoria from Categoria c
+end
+

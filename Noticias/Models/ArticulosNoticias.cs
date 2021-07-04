@@ -8,7 +8,7 @@ namespace NoticiasMVC.Models
 {
     public class ArticulosNoticias
     {
-        [Key]
+        [Key] 
         public int IdNoticias { get; set; }
         public string Articulo { get; set; }
         public string Titulo  { get; set; }

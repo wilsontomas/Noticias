@@ -69,3 +69,4 @@ C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\Noticias\o
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\Noticias\obj\Debug\net5.0\NoticiasMVC.pdb
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\Noticias\obj\Debug\net5.0\NoticiasMVC.genruntimeconfig.cache
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\Noticias\bin\Debug\net5.0\Dapper.dll
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\Noticias\obj\Debug\net5.0\Razor\Views\Home\EditarNoticia.cshtml.g.cs

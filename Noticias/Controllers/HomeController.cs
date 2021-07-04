@@ -39,7 +39,27 @@ namespace Noticias.Controllers
             Registros.pais = pais;
             return View(Registros);
         }
+        [HttpPost]
+        public IActionResult AgregarNoticia(ArticulosNoticias articulosNoticias) {
+            articulosNoticias.Fecha = DateTime.Now;
+            var parametros = new { @Titulo= articulosNoticias.Titulo, @Articulo = articulosNoticias.Articulo, @CategoriaId = articulosNoticias.CategoriaId, @PaisId = articulosNoticias.PaisId };
+            _conexion.conexion.Query("InsertarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
 
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult EliminarNoticia(int Id) {
+            var parametros = new { @IdNoticia=Id };
+            _conexion.conexion.Query("EliminarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult EditarNoticia(int Id)
+        {
+
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

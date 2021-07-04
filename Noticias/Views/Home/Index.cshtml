@@ -2,7 +2,41 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<br />
+<h3>Agregar Noticias</h3>
+<form method="post" asp-action="AgregarNoticia">
+    <div class="form-group">
+        <label for="Titulo">Titulo</label>
+        <input type="text" required class="form-control" id="Titulo" name="Titulo" placeholder="Titulo">
+    </div>
+    <div class="form-group">
+        <label for="PaisId">Pais</label>
+        <select name="PaisId" id="PaisId" class="form-control">
+            @foreach (var item in Model.pais)
+            {
+                <option value="@item.IdPais">@item.NombrePais</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="CategoriaId">Categoria</label>
+        <select name="CategoriaId" id="CategoriaId" class="form-control">
+            @foreach (var item in Model.categoria)
+            {
+                <option value="@item.IdCategoria">@item.NombreCategoria</option>
+            }
+        </select>
+    </div>
+    <div class="form-check">
+        <label for="articulo">Articulo</label>
+        <textarea class="form-control" id="articulo" name="Articulo">
 
+        </textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -21,6 +55,16 @@
             <td>@item.Fecha</td>
             <td>@item.NombreCategoria</td>
             <td>@item.NombrePais</td>
+            <td>
+                <form method="post" asp-action="EliminarNoticia">
+                    <button name="Id" value="@item.IdNoticias" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" asp-action="EditarNoticia">
+                    <button name="Id" value="@item.IdNoticias" class="btn btn-success">Editar</button>
+                </form>
+            </td>
         </tr>
         }
     </tbody>
