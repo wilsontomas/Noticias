@@ -1,8 +1,28 @@
-﻿@{
+﻿@model NoticiasMVC.Models.RegistrosDto
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>IdNoticias</th>           
+            <th>Titulo</th>
+            <th>Fecha</th>
+            <th>NombreCategoria</th>
+            <th>NombrePais</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.noticiasModel) { 
+        <tr>
+            <td>@item.IdNoticias</td>
+            <td>@item.Titulo</td>
+            <td>@item.Fecha</td>
+            <td>@item.NombreCategoria</td>
+            <td>@item.NombrePais</td>
+        </tr>
+        }
+    </tbody>
+
+</table>
