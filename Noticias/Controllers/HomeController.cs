@@ -50,15 +50,41 @@ namespace Noticias.Controllers
         [HttpPost]
         public IActionResult EliminarNoticia(int Id) {
             var parametros = new { @IdNoticia=Id };
-            _conexion.conexion.Query("EliminarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
+            _conexion.conexion.Query("EditarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
 
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult EditarNoticia(int Id)
         {
+            var parametros = new { @IdNoticia = Id };
+            var noticia = _conexion.conexion.Query<ArticulosNoticias>("ObtenerNoticiaPorId", parametros, commandType: CommandType.StoredProcedure).ToList();
 
-            return View();
+            if (noticia.Count !=1) { return RedirectToAction("Index"); }
+
+            List<Pais> pais = _conexion.conexion.Query<Pais>("ObtenerPais", null, commandType: CommandType.StoredProcedure).ToList();
+            List<Categoria> categorias = _conexion.conexion.Query<Categoria>("ObtenerCategoria", null, commandType: CommandType.StoredProcedure).ToList();
+            var Registros = new EdicionModel();
+            Registros.articulosNoticias = noticia;
+            Registros.categoria = categorias;
+            Registros.pais = pais;
+            return View(Registros);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(ArticulosNoticias articulosNoticias)
+        {
+            var parametros = new
+            {
+                @IdNoticias = articulosNoticias.IdNoticias,
+                @Titulo = articulosNoticias.Titulo,
+                @Articulo = articulosNoticias.Articulo,
+                @CategoriaId = articulosNoticias.CategoriaId,
+                @PaisId = articulosNoticias.PaisId
+            };
+            _conexion.conexion.Query("EditarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
+
+            return RedirectToAction("Index");
         }
         public IActionResult Privacy()
         {

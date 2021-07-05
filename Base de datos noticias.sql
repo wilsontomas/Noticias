@@ -87,6 +87,7 @@ begin
 update ArticulosNoticias set Titulo =@Titulo, Articulo=@Articulo, CategoriaId=@CategoriaId, PaisId=@PaisId where IdNoticias = @IdNoticias;
 end
 
+
 create procedure EliminarNoticia
 (@IdNoticia int)
 as set nocount on
@@ -104,5 +105,12 @@ create procedure ObtenerCategoria
 as set nocount on
 begin
 select c.IdCategoria,c.NombreCategoria from Categoria c
+end
+
+create procedure ObtenerNoticiaPorId
+(@IdNoticia int)
+as set nocount on
+begin
+	select a.IdNoticias,a.Titulo,a.Articulo from ArticulosNoticias a where a.IdNoticias=@IdNoticia
 end
 
