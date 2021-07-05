@@ -50,7 +50,7 @@ namespace Noticias.Controllers
         [HttpPost]
         public IActionResult EliminarNoticia(int Id) {
             var parametros = new { @IdNoticia=Id };
-            _conexion.conexion.Query("EditarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
+            _conexion.conexion.Query("EliminarNoticia", parametros, commandType: CommandType.StoredProcedure).ToList();
 
             return RedirectToAction("Index");
         }
