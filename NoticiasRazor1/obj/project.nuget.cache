@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FBuBNQKm4NeeTK3Q1+VWpbdfr7LtP9y5S2K1XHVZlCiP5H2eHb0Yc3qpIviz4435u1Klp3D2Wp2IDWdf30w+Qw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\wilso\\Desktop\\Periodo 2021 c2 eduar\\tec de internet\\Noticias\\NoticiasRazor1\\NoticiasRazor1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wilso\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512"
+  ],
+  "logs": []
+}
