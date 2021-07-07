@@ -111,6 +111,10 @@ create procedure ObtenerNoticiaPorId
 (@IdNoticia int)
 as set nocount on
 begin
-	select a.IdNoticias,a.Titulo,a.Articulo from ArticulosNoticias a where a.IdNoticias=@IdNoticia
-end
+select a.IdNoticias, a.Titulo, a.Articulo, a.Fecha,c.NombreCategoria, p.NombrePais 
+from ArticulosNoticias a inner join Categoria c on a.CategoriaId=c.IdCategoria
+ inner join Pais p on a.PaisId = p.IdPais where a.IdNoticias=@IdNoticia
+	end
+
+
 

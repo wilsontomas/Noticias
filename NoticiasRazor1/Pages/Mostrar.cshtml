@@ -1,0 +1,18 @@
+﻿@page
+@model NoticiasRazor1.Pages.MostrarModel
+@{
+}
+<br />
+
+<div class="container">
+    <h3>Articulo</h3>
+    <h4>@Model.Noticia.Titulo</h4>
+    <h5>Fecha: @Model.Noticia.Fecha.ToString("yyyy'-'MM'-'dd")</h5>
+    <h5>Categoria: @Model.Noticia.NombreCategoria</h5>
+    <h5>Pais: @Model.Noticia.NombrePais</h5>
+    <hr />
+    <p>@Model.Noticia.Articulo</p>
+    <form method="get" asp-page="Index">
+        <button type="submit" class="btn btn-primary">Volver</button>
+    </form>
+</div>
