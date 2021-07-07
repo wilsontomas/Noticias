@@ -1,0 +1,37 @@
+﻿@page
+@model NoticiasRazor1.Pages.BuscarModel
+@{
+}
+
+<br />
+@if (Model.ListaNoticias.Count == 0)
+{
+
+    <h3>No hay noticias para mostrar</h3>
+    <br />
+    <form method="get" asp-page="Index">
+        <button type="submit" class="btn btn-danger">Volver</button>
+    </form>
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.ListaNoticias)
+        {
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://image.flaticon.com/icons/png/512/1388/1388325.png" (click)="verNoticia(Datos.url)" style="cursor:pointer" alt="Card image cap">
+                <div class="card-body">
+                    <h5>@item.Fecha.ToString("yyyy'-'MM'-'dd")</h5>
+                    <h5 class="card-title" style="cursor:pointer">@item.Titulo</h5>
+                    <p class="card-text">Categoria: @item.NombreCategoria</p>
+                    <p class="card-text">Pais: @item.NombrePais</p>
+                    <form method="get" asp-page="Mostrar">
+                        <button class="btn btn-primary" name="NoticiaId" value="@item.IdNoticias">Ver la noticia</button>
+                    </form>
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

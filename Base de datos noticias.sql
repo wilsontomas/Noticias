@@ -34,6 +34,7 @@ insert into Pais (NombrePais) values ('Rusia');
 insert into Pais (NombrePais) values ('Japon');
 insert into Pais (NombrePais) values ('China');
 
+select * from Pais
 create table ArticulosNoticias(
 IdNoticias int not null primary key identity(1,1),
 Titulo varchar(max) not null,
@@ -116,5 +117,12 @@ from ArticulosNoticias a inner join Categoria c on a.CategoriaId=c.IdCategoria
  inner join Pais p on a.PaisId = p.IdPais where a.IdNoticias=@IdNoticia
 	end
 
-
+create procedure ObtenerNoticiaPorBusqueda
+(@termino varchar(255))
+as set nocount on
+begin
+select a.IdNoticias, a.Titulo, a.Articulo, a.Fecha,c.NombreCategoria, p.NombrePais 
+from ArticulosNoticias a inner join Categoria c on a.CategoriaId=c.IdCategoria 
+inner join Pais p on a.PaisId = p.IdPais where a.Titulo like '%'+@termino+'%' or a.Articulo like '%'+@termino+'%';
+end
 
