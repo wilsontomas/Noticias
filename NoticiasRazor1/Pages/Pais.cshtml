@@ -1,15 +1,17 @@
 ﻿@page
-@model NoticiasRazor1.Pages.CategoriaModel
+@model NoticiasRazor1.Pages.PaisModel
 @{
 }
 
-@if (Model.ListaNoticias.Count == 0) { 
 
-<h3>No hay noticias para mostrar</h3>
-<br />
-<form method="get" asp-page="Index">
-    <button type="submit" class="btn btn-danger">Volver</button>
-</form>
+@if (Model.ListaNoticias.Count == 0)
+{
+
+    <h3>No hay noticias para mostrar</h3>
+    <br />
+    <form method="get" asp-page="Index">
+        <button type="submit" class="btn btn-danger">Volver</button>
+    </form>
 }
 
 <div class="container">

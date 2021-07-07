@@ -47,3 +47,4 @@ C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\NoticiasRa
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\NoticiasRazor1\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\NoticiasRazor1\obj\Debug\net5.0\Razor\Pages\Categoria.cshtml.g.cs
 C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\NoticiasRazor1\obj\Debug\net5.0\Razor\Pages\Mostrar.cshtml.g.cs
+C:\Users\wilso\Desktop\Periodo 2021 c2 eduar\tec de internet\Noticias\NoticiasRazor1\obj\Debug\net5.0\Razor\Pages\Pais.cshtml.g.cs

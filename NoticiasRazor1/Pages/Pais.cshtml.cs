@@ -11,18 +11,19 @@ using NoticiasMVC.Models;
 
 namespace NoticiasRazor1.Pages
 {
-    public class CategoriaModel : PageModel
+    public class PaisModel : PageModel
     {
         private SqlConnection _conexion;
-        public CategoriaModel() {
+        public PaisModel()
+        {
             var cn = new Conexion();
-            _conexion = cn.conexion; 
+            _conexion = cn.conexion;
         }
         public List<NoticiasModel> ListaNoticias { get; set; }
-        public void OnGet(int CategoriaId)
+        public void OnGet(int PaisId)
         {
-            var parametros = new { @idcategoria= CategoriaId };
-            var ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorCategoria", parametros, commandType: CommandType.StoredProcedure).ToList();
+            var parametros = new { @idpais = PaisId };
+            var ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorPais", parametros, commandType: CommandType.StoredProcedure).ToList();
             ListaNoticias = ListaPorCategoria;
         }
     }

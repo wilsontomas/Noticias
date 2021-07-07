@@ -10,8 +10,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
-            @Html.ActionLink("Navbar","index")
+            <a class="navbar-brand text-white" href="Index">Inicio</a>
+           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,22 +19,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <form method="get" asp-page="Categoria" class="form-inline mr-sm-2">
+                            <select class="form-control my-2 my-sm-0" name="CategoriaId">
+                                <option value="1" >Deporte</option>
+                                <option value="2" >Musica</option>
+                                <option value="3" >Peliculas</option>
+                                <option value="4" >Arte</option>
+                                <option value="5" >Tecnologia</option>
+                                <option value="6" >Politica</option>
+                                
+                            </select>
+                            <button type="submit" class="btn btn-success">Buscar Por Pais</button>
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <form method="get" asp-page="Pais" class="form-inline mr-sm-2">
+                            <select class="form-control" name="PaisId">
+                                <option value="1">Rep Dominicana</option>
+                                <option value="2">Estados Unidos</option>
+                                <option value="3">Panama</option>
+                                <option value="4">Peru</option>
+                                <option value="5">Colombia</option>
+                                <option value="6">Argentina</option>
+                                <option value="7">Venezuela</option>
+                                <option value="8">Chile</option>
+                                <option value="9">Mexico</option>
+                                <option value="10">Suiza</option>
+                                <option value="11">Alemania</option>
+                                <option value="12">Rusia</option>
+                                <option value="13">Japon</option>
+                                <option value="14">China</option>
+
+                            </select>
+                            <button type="submit" class="btn btn-success  my-2 my-sm-0">Buscar Por Categoria</button>
+                        </form>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
+                    
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
