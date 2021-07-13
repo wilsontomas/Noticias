@@ -19,11 +19,21 @@ namespace NoticiasRazor1.Pages
             _conexion = cn.conexion; 
         }
         public List<NoticiasModel> ListaNoticias { get; set; }
-        public void OnGet(int CategoriaId)
+        public IActionResult OnGet(int CategoriaId)
         {
+            if (CategoriaId ==0) { return RedirectToPage("Index"); }
             var parametros = new { @idcategoria= CategoriaId };
-            var ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorCategoria", parametros, commandType: CommandType.StoredProcedure).ToList();
+            List<NoticiasModel> ListaPorCategoria = new List<NoticiasModel>(); 
+            
+            try { 
+            ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorCategoria", parametros, commandType: CommandType.StoredProcedure).ToList();
+
+            } catch (Exception e) {
+                return RedirectToPage("Index");
+            }
+            if (ListaPorCategoria.Count == 0) { return RedirectToPage("Index"); }
             ListaNoticias = ListaPorCategoria;
+            return Page();
         }
     }
 }

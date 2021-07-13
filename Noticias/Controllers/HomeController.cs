@@ -57,6 +57,7 @@ namespace Noticias.Controllers
         [HttpGet]
         public IActionResult EditarNoticia(int Id)
         {
+            
             var parametros = new { @IdNoticia = Id };
             var noticia = _conexion.conexion.Query<ArticulosNoticias>("ObtenerNoticiaPorId", parametros, commandType: CommandType.StoredProcedure).ToList();
 

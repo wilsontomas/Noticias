@@ -20,11 +20,22 @@ namespace NoticiasRazor1.Pages
             _conexion = cn.conexion;
         }
         public List<NoticiasModel> ListaNoticias { get; set; }
-        public void OnGet(int PaisId)
+        public IActionResult OnGet(int PaisId)
         {
+            if (PaisId == 0) { return RedirectToPage("Index"); }
             var parametros = new { @idpais = PaisId };
-            var ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorPais", parametros, commandType: CommandType.StoredProcedure).ToList();
-            ListaNoticias = ListaPorCategoria;
+            List<NoticiasModel> ListaPorPais = new List<NoticiasModel>();
+            try
+            {
+                ListaPorPais = _conexion.Query<NoticiasModel>("ObtenerNoticiasPorPais", parametros, commandType: CommandType.StoredProcedure).ToList();
+            }
+            catch (Exception e) {
+                return RedirectToPage("Index");
+            }
+            if (ListaPorPais.Count ==0) { return RedirectToPage("Index"); }
+            ListaNoticias = ListaPorPais;
+            return Page();
         }
+
     }
 }

@@ -20,11 +20,13 @@ namespace NoticiasRazor1.Pages
             _conexion = cn.conexion;
         }
         public List<NoticiasModel> ListaNoticias { get; set; }
-        public void OnGet(string Buscar)
+        public IActionResult OnGet(string Buscar)
         {
+            if (string.IsNullOrEmpty(Buscar)) { return RedirectToPage("Index"); }
             var parametros = new { @termino = Buscar };
-            var ListaPorCategoria = _conexion.Query<NoticiasModel>("ObtenerNoticiaPorBusqueda", parametros, commandType: CommandType.StoredProcedure).ToList();
-            ListaNoticias = ListaPorCategoria;
+            var Lista = _conexion.Query<NoticiasModel>("ObtenerNoticiaPorBusqueda", parametros, commandType: CommandType.StoredProcedure).ToList();
+            ListaNoticias = Lista;
+            return Page();
         }
     }
 }

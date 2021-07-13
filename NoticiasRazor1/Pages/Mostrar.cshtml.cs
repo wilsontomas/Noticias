@@ -19,11 +19,20 @@ namespace NoticiasRazor1.Pages
             _conexion = cn.conexion;
         }
         public NoticiasModel Noticia { get; set; }
-        public void OnGet(int NoticiaId)
+        public IActionResult OnGet(int NoticiaId)
         {
+            if (NoticiaId == 0) { return RedirectToPage("Index"); }
             var parametros = new { @IdNoticia= NoticiaId };
-           var noticiaUnica = _conexion.QuerySingle<NoticiasModel>("ObtenerNoticiaPorId", parametros, commandType: CommandType.StoredProcedure);
+            NoticiasModel noticiaUnica = new NoticiasModel();
+            try { 
+            noticiaUnica = _conexion.QuerySingle<NoticiasModel>("ObtenerNoticiaPorId", parametros, commandType: CommandType.StoredProcedure);
+           
+            } catch (Exception error) {
+             return RedirectToPage("Index");
+            }
+             if (noticiaUnica ==null) { return RedirectToPage("Index"); }
             Noticia = noticiaUnica;
+            return Page();
         }
     }
 }
